@@ -3,10 +3,14 @@ package main
 import (
 	"net/http"
 
+	"tipes/config"
+
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
+
+	config.Connection()
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
 
