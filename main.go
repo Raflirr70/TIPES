@@ -3,7 +3,8 @@ package main
 import (
 	"net/http"
 
-	"tipes/config"
+	"tipes/internal/config"
+	"tipes/internal/database"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,6 +12,7 @@ import (
 func main() {
 
 	config.Connection()
+	database.Migrate()
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
 
