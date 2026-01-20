@@ -13,6 +13,7 @@ func main() {
 
 	config.Connection()
 	database.Migrate()
+	database.Seed()
 	// Create a Gin router with default middleware (logger and recovery)
 	r := gin.Default()
 

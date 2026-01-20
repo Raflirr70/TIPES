@@ -3,7 +3,7 @@ package models
 type Seat struct {
 	SeatID     uint `gorm:"primaryKey"`
 	AirplaneID uint
-	NoSeat     int
+	NoSeat     string
 	Status     bool
 
 	Airplane Airplane
