@@ -6,4 +6,7 @@ type Airplane struct {
 	NSeat        int
 	Baggage      int
 	CabinBaggage int
+
+	Flight []Flight
+	Seat   []Seat
 }

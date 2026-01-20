@@ -17,4 +17,6 @@ type Flight struct {
 	AirportTo   Airport `gorm:"foreignKey:AirportIDTo"`
 	Airplane    Airplane
 	SeatClass   SeatClass
+
+	Order []Order
 }

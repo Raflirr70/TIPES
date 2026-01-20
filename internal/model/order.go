@@ -16,4 +16,6 @@ type Order struct {
 
 	User   User
 	Flight Flight
+
+	Ticket []Ticket
 }

@@ -7,4 +7,6 @@ type User struct {
 	NoTelephone string
 	Password    string
 	IsActive    bool
+
+	Order []Order
 }
