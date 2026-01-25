@@ -17,7 +17,9 @@ func NewAirplaneHandler(service service.AirplaneService) *AirplaneHandler {
 }
 
 func (h *AirplaneHandler) Ping(c *gin.Context) {
-	airplanes, err := h.service.GetAll()
+	name := c.Query("name")
+
+	airplanes, err := h.service.GetAll(name)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": err.Error(),

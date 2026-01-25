@@ -7,7 +7,7 @@ import (
 )
 
 type AirplaneRepository interface {
-	FindAll() ([]model.Airplane, error)
+	FindWithFilter(name string) ([]model.Airplane, error)
 }
 
 type airplaneRepository struct {
@@ -18,8 +18,15 @@ func NewAirplaneRepository(db *gorm.DB) AirplaneRepository {
 	return &airplaneRepository{db}
 }
 
-func (r *airplaneRepository) FindAll() ([]model.Airplane, error) {
+func (r *airplaneRepository) FindWithFilter(name string) ([]model.Airplane, error) {
 	var airplanes []model.Airplane
-	err := r.db.Find(&airplanes).Error
+
+	query := r.db.Model(&model.Airplane{})
+
+	if name != "" {
+		query = query.Where("name ILIKE ?", "%"+name+"%")
+	}
+
+	err := query.Find(&airplanes).Error
 	return airplanes, err
 }
