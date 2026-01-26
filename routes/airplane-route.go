@@ -14,5 +14,9 @@ func AirplaneRoute(r *gin.Engine) {
 	airplaneService := service.NewAirplaneService(airplaneRepo)
 	airplaneHandler := handler.NewAirplaneHandler(airplaneService)
 
-	r.GET("/search-airplane", airplaneHandler.Ping)
+	airplane := r.Group("/search-airplane")
+	{
+		airplane.GET("/", airplaneHandler.Ping)
+		airplane.GET("/:name", airplaneHandler.Ping)
+	}
 }

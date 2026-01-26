@@ -6,7 +6,7 @@ import (
 )
 
 type AirplaneService interface {
-	GetAll() ([]model.Airplane, error)
+	GetAll(name string) ([]model.Airplane, error)
 }
 
 type airplaneService struct {
@@ -17,6 +17,6 @@ func NewAirplaneService(repo repository.AirplaneRepository) AirplaneService {
 	return &airplaneService{repo}
 }
 
-func (s *airplaneService) GetAll() ([]model.Airplane, error) {
-	return s.repo.FindAll()
+func (s *airplaneService) GetAll(name string) ([]model.Airplane, error) {
+	return s.repo.FindWithFilter(name)
 }
